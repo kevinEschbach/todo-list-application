@@ -1,0 +1,2 @@
+<h2>Todo</h2>
+<app-todo-list-entry *ngFor="let task of todoList" [name] = "task.name" [description]="task.description" [state]="task.state" (click)="task.toggleState()"></app-todo-list-entry>
