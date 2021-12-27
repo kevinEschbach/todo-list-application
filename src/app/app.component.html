@@ -1,2 +1,52 @@
-<h1>{{ title }}</h1>
-<app-todo-list></app-todo-list>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<mat-toolbar>
+  <button mat-button class="menu-button">
+    <mat-icon (click)="sidenav.toggle()" >list</mat-icon>
+  {{title}}
+</button>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav">
+
+
+    <img class="avatar mat-elevation-z8" src="https://yt3.ggpht.com/a/AATXAJxJkCogWrxHN2peYmxbpzWFn0evdusYocEruQ=s900-c-k-c0xffffffff-no-rj-mo" />
+      <h4 class="name">Kevin - Max</h4>
+      <p class="designation">QA Engineer & Automation</p>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button">
+      <mat-icon>add</mat-icon>
+      <span>Check List & Add</span>
+        </button>
+
+    <button mat-button class="menu-button">
+      <mat-icon>done</mat-icon>
+        <span>View entry</span>
+    </button>
+
+
+  <mat-divider></mat-divider>
+
+  <button mat-button class="menu-button">
+      <mat-icon>help</mat-icon>
+      <span>Help</span>
+  </button>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <form>
+      <fieldset>
+      <legend>NEW TASK</legend>
+      Name: <input type="text" size="30" id="name" /><br /><br />
+      Description: <input type="text-area" size="150" id="description" /><br /><br />
+
+      <button type="submit" id="task">Add task</button><br />
+      </fieldset>
+      </form>
+        <app-todo-list></app-todo-list>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
