@@ -36,13 +36,13 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <form>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
       <fieldset>
       <legend>NEW TASK</legend>
-      Name: <input type="text" size="30" id="name" /><br /><br />
-      Description: <input type="text-area" size="150" id="description" /><br /><br />
+      Name: <input type="text" size="30" id="name" name="name" ngModel #name="ngModel"/><br /><br />
+      Description: <input type="text-area" size="150" id="description" name="description" ngModel /><br /><br />
 
-      <button type="submit" id="task">Add task</button><br />
+      <button>Add task</button><br />
       </fieldset>
       </form>
         <app-todo-list></app-todo-list>

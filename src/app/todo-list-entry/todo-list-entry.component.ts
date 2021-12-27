@@ -1,6 +1,6 @@
 
-import { Component, Input} from '@angular/core';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Component, Input, Output, EventEmitter, ElementRef} from '@angular/core';
+import { animate, state, style, transition, trigger, useAnimation } from '@angular/animations';
 
 @Component({
   selector: 'app-todo-list-entry',
@@ -9,13 +9,15 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   animations: [
     trigger('todoDone', [
       state('todo', style({
-        color: 'green'
+        color: 'green', 
+        transform: 'translateX(0%)',
       })),
       state('done', style({
         color: 'red',
-        textDecoration: 'line-through'
+        textDecoration: 'line-through',
+        transform: 'translateX(100%)',
       })),
-      transition('todo <=> done', animate('100ms'))
+      transition('todo <=> done', animate(1000))
     ])
   ]
 })
@@ -25,11 +27,19 @@ export class TodoListEntryComponent {
   @Input() description: string;
   @Input() state: string;
 
+  @Output() deleteMe = new EventEmitter<TodoListEntryComponent>();
+
+  deleteMeFunction(){
+    this.deleteMe.emit(this);
+    console.log("Trying to delete me")
+  }
+
   constructor(){
     this.state = "todo";
     this.name = "task";
     this.description = ""
   }
+
 
 
   

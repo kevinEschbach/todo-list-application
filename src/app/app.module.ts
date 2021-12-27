@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -16,7 +17,7 @@ import { MatDividerModule} from '@angular/material/divider';
   declarations: [
     AppComponent,
     TodoListComponent,
-    TodoListEntryComponent
+    TodoListEntryComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +26,8 @@ import { MatDividerModule} from '@angular/material/divider';
     MatSidenavModule,
     MatButtonModule,
     MatIconModule,
-    MatDividerModule
+    MatDividerModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

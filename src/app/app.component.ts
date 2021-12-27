@@ -1,6 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ElementRef, Input } from '@angular/core';
 import { MatSidenav, MatSidenavContainer } from '@angular/material/sidenav';
 import { BreakpointObserver} from '@angular/cdk/layout';
+import { TodoListComponent } from './todo-list/todo-list.component';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -13,10 +15,15 @@ export class AppComponent {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
 
+  @ViewChild(TodoListComponent) todoListComponent: any;
 
-  constructor(private observer: BreakpointObserver) {
+
+  constructor(private observer: BreakpointObserver, private elementRef:ElementRef) {
 
   }
+
+  @Input() name: string = ""
+  @Input() description: string = ""
 
   ngAfterViewInit() {
     this.observer.observe(['(max-width: 800px)']).subscribe((res) =>{
@@ -28,6 +35,14 @@ export class AppComponent {
           this.sidenav.open();
         }
     });
+  }
+
+  addTask(name: string, description: string){
+    this.todoListComponent.addTask(name, description);
+  }
+
+  onSubmit(f: NgForm){
+    this.addTask(f.value.name, f.value.description)
   }
 
 
